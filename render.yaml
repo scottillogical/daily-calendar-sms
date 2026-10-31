@@ -1,0 +1,28 @@
+services:
+  - type: cron
+    name: daily-calendar-sms
+    runtime: ruby
+    schedule: "0 * * * *"
+    buildCommand: bundle install
+    startCommand: ruby daily_calendar.rb
+    envVars:
+      - key: TIMEZONE
+        value: America/New_York
+      - key: SEND_HOUR
+        value: "7"
+      - key: GOOGLE_CALENDAR_IDS
+        value: primary
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REFRESH_TOKEN
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM_NUMBER
+        sync: false
+      - key: SMS_TO_NUMBER
+        sync: false
